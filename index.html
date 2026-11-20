@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة المشاريع وإدارة فريق التصميم</title>
+  <title>لوحة المشاريع وإدارة فريق التصميم · GM / CEO</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -62,11 +62,11 @@
     }
     button, select, input, textarea { font: inherit; color: inherit; }
     .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
-    .app { max-width: 1380px; margin-inline: auto; padding: 24px 16px 64px; display: flex; flex-direction: column; gap: 16px; }
+    .app { max-width: 1420px; margin-inline: auto; padding: 24px 16px 64px; display: flex; flex-direction: column; gap: 16px; }
 
     .topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
     .eyebrow { margin: 0 0 4px; font-size: 12px; color: var(--ink-3); }
-    h1 { margin: 0; font-size: 28px; font-weight: 700; line-height: 1.2; }
+    h1 { margin: 0; font-size: 27px; font-weight: 700; line-height: 1.2; }
     .nav-tabs { display: flex; gap: 8px; background: var(--surface); padding: 6px; border-radius: 10px; border: 1px solid var(--line); }
     .tab-btn {
       padding: 8px 18px; border: 0; border-radius: 7px; background: transparent;
@@ -87,17 +87,30 @@
     .btn-sm { height: 28px; padding: 0 10px; font-size: 12px; }
 
     /* Executive KPI Tiles */
-    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-    .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 15px 16px; display: flex; flex-direction: column; gap: 4px; }
+    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+    .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 15px 16px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; transition: transform .12s, border-color .12s; }
+    .tile:hover { border-color: var(--line-strong); transform: translateY(-1px); }
     .tile .k { font-size: 12.5px; color: var(--ink-2); font-weight: 600; }
     .tile .v { font-size: 30px; font-weight: 700; line-height: 1.15; }
     .tile .s { font-size: 12px; color: var(--ink-3); }
     .tile.is-crit .v, .tile.is-crit .k { color: var(--crit-text); }
     .tile.is-warn .v, .tile.is-warn .k { color: #b4690e; }
+    .tile.is-good .v { color: #128058; }
+
+    /* GM Escalation & Decision Strip */
+    .gm-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 14px; }
+    .esc-list { display: flex; flex-direction: column; gap: 8px; max-height: 310px; overflow-y: auto; }
+    .esc-item {
+      border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+      background: var(--surface-2); display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 10px; cursor: pointer;
+    }
+    .esc-item:hover { border-color: var(--line-strong); background: var(--hover); }
+    .esc-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; }
 
     /* Charts Grid */
-    .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; }
-    .chart-box { position: relative; height: 265px; width: 100%; }
+    .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 14px; }
+    .chart-box { position: relative; height: 255px; width: 100%; }
 
     /* Cards & Tables */
     .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
@@ -114,18 +127,19 @@
     }
 
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; max-height: 520px; }
-    table { width: 100%; border-collapse: collapse; min-width: 960px; }
+    table { width: 100%; border-collapse: collapse; min-width: 1040px; }
     th, td { padding: 9px 11px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: middle; }
     th { position: sticky; top: 0; background: var(--surface-2); font-size: 12px; color: var(--ink-2); font-weight: 600; z-index: 2; }
     tr:hover td { background: var(--hover); }
 
-    .bar { width: 90px; height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; display: inline-block; vertical-align: middle; margin-inline-end: 6px; }
+    .bar { width: 88px; height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; display: inline-block; vertical-align: middle; margin-inline-end: 6px; }
     .bar i { display: block; height: 100%; background: var(--s-done); }
     .badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 5px; font-size: 11.5px; font-weight: 600; border: 1px solid var(--line); background: var(--surface-2); }
     .badge.late { background: rgba(208, 59, 59, .12); color: var(--crit-text); border-color: rgba(208, 59, 59, .35); }
     .badge.done { background: rgba(27, 175, 122, .12); color: #128058; border-color: rgba(27, 175, 122, .35); }
     .badge.stopped { background: rgba(250, 178, 25, .16); color: #9a6700; border-color: rgba(250, 178, 25, .45); }
     .badge.quote { background: rgba(42, 120, 214, .12); color: #1d5ca8; border-color: rgba(42, 120, 214, .35); }
+    .badge.gate { background: rgba(235, 104, 52, .14); color: #b84214; border-color: rgba(235, 104, 52, .35); }
 
     /* Timeline */
     .tl { max-height: 400px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; direction: ltr; }
@@ -136,8 +150,7 @@
     .tl-axis { position: relative; }
     .tl-today-chip { position: absolute; bottom: 3px; transform: translateX(-50%); padding: 0 7px; border-radius: 4px; background: var(--ink); color: var(--surface); font-size: 10.5px; }
     .tl-grid { position: absolute; inset: 38px 0 0 220px; pointer-events: none; }
-    .tl-line { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
-    .tl-line.is-today { width: 2px; background: var(--ink); }
+    .tl-line.is-today { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); }
     .tl-row { height: 32px; border-bottom: 1px solid var(--line); align-items: center; }
     .tl-label { position: sticky; left: 0; z-index: 3; display: flex; align-items: center; gap: 6px; padding: 0 8px; background: var(--surface); font-size: 12px; height: 100%; }
     .tl-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
@@ -175,7 +188,7 @@
 
     /* Modal & Unit Control */
     .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.52); display: grid; place-items: center; padding: 16px; z-index: 100; }
-    .modal { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; max-width: 760px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 20px; box-shadow: var(--shadow); }
+    .modal { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; max-width: 780px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 20px; box-shadow: var(--shadow); }
     .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
     .modal-head h3 { margin: 0; font-size: 18px; }
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
@@ -184,7 +197,8 @@
     .step-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--line-strong); background: var(--surface); cursor: pointer; font-weight: 700; }
     .step-btn:hover { background: var(--hover); }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
+      .gm-grid { grid-template-columns: 1fr; }
       .board { grid-template-columns: repeat(2, minmax(240px, 1fr)); }
     }
     @media (max-width: 600px) {
@@ -205,6 +219,21 @@ const PHASE_LABELS = {
   balance: "بنود متبقية",
   making: "تحت التصنيع",
   stopped: "متوقف"
+};
+
+const OWNER_LABELS = {
+  client: "العميل / الاستشاري (اعتماد ومواصفات)",
+  procurement: "المشتريات / الخامات",
+  factory: "المصنع / الدهان",
+  site: "الموقع / التركيب",
+  design: "مكتب التصميم (رسومات / Cutting List)"
+};
+
+const TASK_TRACK_LABELS = {
+  cutting_list: "Cutting List (إنتاج)",
+  shop_drawing: "Shop Drawing (اعتماد)",
+  rectification: "Rectification (تعديل موقع)",
+  quotation: "Quotation / عميل محتمل"
 };
 
 const UNIT_KEYS = ["windows", "doors", "decor", "sliding", "curtainWall", "skylight", "louver", "flyScreen", "handrail"];
@@ -241,6 +270,43 @@ const PRIO_LABELS = {
   low: { label: "منخفضة", rank: 4, cls: "prio-low" }
 };
 
+function inferGovernance(proj) {
+  const note = (proj.note || "").toLowerCase();
+  const glassNotApproved = (proj.glass || "").toLowerCase().includes("not approved");
+  const cuttingNotReady = note.includes("cutting list not ready");
+  const shortage = note.includes("shortage");
+  const stopInstall = note.includes("installation: stop");
+  const rectification = note.includes("rectification");
+
+  let blockerOwner = proj.blockerOwner || "";
+  if (!blockerOwner) {
+    if (glassNotApproved) blockerOwner = "client";
+    else if (shortage) blockerOwner = "procurement";
+    else if (cuttingNotReady) blockerOwner = "design";
+    else if (stopInstall || rectification) blockerOwner = "site";
+    else if (proj.phase === "making" || proj.phase === "stopped") blockerOwner = "factory";
+  }
+
+  let nextAction = proj.nextAction || "";
+  if (!nextAction) {
+    if (glassNotApproved) nextAction = "حسم واعتماد مواصفات الزجاج مع العميل/الاستشاري قبل استكمال التوريد";
+    else if (shortage) nextAction = "تسريع توريد الخامات الناقصة لمعالجة البنود المعلقة";
+    else if (cuttingNotReady) nextAction = "إنجاز قائمة القطع (Cutting List) لفتح التصنيع";
+    else if (stopInstall) nextAction = "معالجة أسباب إيقاف التركيب وإعادة جدولة الموقع";
+    else if (rectification) nextAction = "إغلاق بنود التعديل والـ Rectification وتسليم الموقع";
+    else if (proj.phase === "done") nextAction = "مراجعة الإغلاق النهائي وتسليم المستندات";
+    else nextAction = "متابعة وتيرة التصنيع والتركيب حسب الخطة";
+  }
+
+  return {
+    ...proj,
+    blockerOwner,
+    nextAction,
+    glassApproved: proj.glassApproved !== undefined ? proj.glassApproved : !glassNotApproved,
+    cuttingListReady: proj.cuttingListReady !== undefined ? proj.cuttingListReady : !cuttingNotReady
+  };
+}
+
 function normalizeProjectUnits(proj) {
   const units = proj.units || {};
   const total = Number(proj.total) || 0;
@@ -261,7 +327,7 @@ function normalizeProjectUnits(proj) {
       doneUnits[k] = Math.min(req, Math.max(0, totalCompleted - assignedDone));
     }
   });
-  return { ...proj, total, balance, units, doneUnits };
+  return inferGovernance({ ...proj, total, balance, units, doneUnits });
 }
 
 const INITIAL_PROJECTS = [
@@ -283,12 +349,12 @@ const INITIAL_PROJECTS = [
 ].map(normalizeProjectUnits);
 
 const INITIAL_TASKS = [
-  { id: "d1", title: "إعداد قائمة القطع (Cutting List) للـ Curtain Wall", isQuotation: false, projectId: "5076", clientLabel: "", designerId: "khadija", priority: "urgent", status: "ongoing", due: "2026-11-22", startedAt: Date.now() - 3600000 * 2.5, elapsedMs: 0, issueNote: "" },
-  { id: "d2", title: "تعديل مخططات أبواب الديكور والـ Pivot", isQuotation: false, projectId: "5021-24", clientLabel: "", designerId: "julie", priority: "high", status: "ongoing", due: "2026-11-21", startedAt: Date.now() - 3600000 * 4, elapsedMs: 0, issueNote: "" },
-  { id: "d3", title: "مراجعة رسومات الشبابيك المخفية (Concealed)", isQuotation: false, projectId: "5064", clientLabel: "", designerId: "tj", priority: "high", status: "done", due: "2026-11-18", startedAt: null, elapsedMs: 3600000 * 5.2, issueNote: "" },
-  { id: "d4", title: "عرض سعر (Quotation) فيلا صباح الأحمد - عميل محتمل", isQuotation: true, projectId: "", clientLabel: "عميل محتمل · صباح الأحمد", designerId: "khadija", priority: "urgent", status: "issues", due: "2026-11-20", startedAt: null, elapsedMs: 3600000 * 1.5, issueNote: "بانتظار تحديد سماكة الزجاج المطلوبة من العميل" },
-  { id: "d5", title: "تفاصيل تصنيع السحّاب وقائمة قطع CW", isQuotation: false, projectId: "5032-24", clientLabel: "", designerId: "tj", priority: "medium", status: "todo", due: "2026-11-25", startedAt: null, elapsedMs: 0, issueNote: "" },
-  { id: "d6", title: "تسعير وتصميم واجهة زجاجية - كوتيشن جديد", isQuotation: true, projectId: "", clientLabel: "Quotation · شركة الأفق", designerId: "julie", priority: "medium", status: "todo", due: "2026-11-24", startedAt: null, elapsedMs: 0, issueNote: "" }
+  { id: "d1", title: "إعداد قائمة القطع (Cutting List) للـ Curtain Wall", track: "cutting_list", isQuotation: false, projectId: "5076", clientLabel: "", designerId: "khadija", priority: "urgent", status: "ongoing", due: "2026-11-22", startedAt: Date.now() - 3600000 * 2.5, elapsedMs: 0, issueNote: "" },
+  { id: "d2", title: "تعديل مخططات أبواب الديكور والـ Pivot", track: "rectification", isQuotation: false, projectId: "5021-24", clientLabel: "", designerId: "julie", priority: "high", status: "ongoing", due: "2026-11-21", startedAt: Date.now() - 3600000 * 4, elapsedMs: 0, issueNote: "" },
+  { id: "d3", title: "مراجعة رسومات الشبابيك المخفية (Concealed)", track: "shop_drawing", isQuotation: false, projectId: "5064", clientLabel: "", designerId: "tj", priority: "high", status: "done", due: "2026-11-18", startedAt: null, elapsedMs: 3600000 * 5.2, issueNote: "" },
+  { id: "d4", title: "عرض سعر (Quotation) فيلا صباح الأحمد - عميل محتمل", track: "quotation", isQuotation: true, projectId: "", clientLabel: "عميل محتمل · صباح الأحمد", designerId: "khadija", priority: "urgent", status: "issues", due: "2026-11-20", startedAt: null, elapsedMs: 3600000 * 1.5, issueNote: "بانتظار تحديد سماكة الزجاج المطلوبة من العميل" },
+  { id: "d5", title: "تفاصيل تصنيع السحّاب وقائمة قطع CW", track: "cutting_list", isQuotation: false, projectId: "5032-24", clientLabel: "", designerId: "tj", priority: "medium", status: "todo", due: "2026-11-25", startedAt: null, elapsedMs: 0, issueNote: "" },
+  { id: "d6", title: "تسعير وتصميم واجهة زجاجية - كوتيشن جديد", track: "quotation", isQuotation: true, projectId: "", clientLabel: "Quotation · شركة الأفق", designerId: "julie", priority: "medium", status: "todo", due: "2026-11-24", startedAt: null, elapsedMs: 0, issueNote: "" }
 ];
 
 const DAY_MS = 86400000;
@@ -307,6 +373,8 @@ const hasObstacle = (p) => {
   const note = (p.note || "").toLowerCase();
   return ["stop", "shortage", "not approved", "not ready", "hold", "damage"].some((k) => note.includes(k));
 };
+const isBottleneck = (p) => p.phase !== "done" && (!p.glassApproved || !p.cuttingListReady);
+const isNearClosure = (p) => p.phase !== "done" && (calcProgress(p) >= 85 || (p.balance > 0 && p.balance <= 4));
 const isProjectLate = (p, today) => Boolean(p.delivery && toDay(p.delivery) < today && calcProgress(p) < 50 && p.phase !== "done");
 const formatHours = (ms) => {
   const hrs = ms / 3600000;
@@ -423,927 +491,12 @@ function App() {
 
   const [designers, setDesigners] = useState(() => {
     try {
-      const s = localStorage.getItem("pd_designers_v3");
+      const s = localStorage.getItem("pd_designers_v4");
       return s ? JSON.parse(s) : INITIAL_DESIGNERS;
     } catch { return INITIAL_DESIGNERS; }
   });
 
   const [projects, setProjects] = useState(() => {
     try {
-      const s = localStorage.getItem("pd_projects_v3");
-      return s ? JSON.parse(s).map(normalizeProjectUnits) : INITIAL_PROJECTS;
-    } catch { return INITIAL_PROJECTS; }
-  });
-
-  const [tasks, setTasks] = useState(() => {
-    try {
-      const s = localStorage.getItem("pd_tasks_v3");
-      return s ? JSON.parse(s) : INITIAL_TASKS;
-    } catch { return INITIAL_TASKS; }
-  });
-
-  const [session, setSession] = useState(() => {
-    try {
-      const s = localStorage.getItem("pd_session_v3");
-      return s ? JSON.parse(s) : null;
-    } catch { return null; }
-  });
-
-  useEffect(() => { localStorage.setItem("pd_designers_v3", JSON.stringify(designers)); }, [designers]);
-  useEffect(() => { localStorage.setItem("pd_projects_v3", JSON.stringify(projects)); }, [projects]);
-  useEffect(() => { localStorage.setItem("pd_tasks_v3", JSON.stringify(tasks)); }, [tasks]);
-  useEffect(() => { localStorage.setItem("pd_session_v3", JSON.stringify(session)); }, [session]);
-
-  const isManager = !session || session.role === "manager";
-  const lockedDesignerId = session && session.role === "designer" ? session.designerId : null;
-
-  const [projSearch, setProjSearch] = useState("");
-  const [projPhase, setProjPhase] = useState("all");
-  const [onlyLate, setOnlyLate] = useState(false);
-  const [onlyObstacles, setOnlyObstacles] = useState(false);
-  const [selectedDesigner, setSelectedDesigner] = useState("all");
-
-  const [showAddProject, setShowAddProject] = useState(false);
-  const [showAddTask, setShowAddTask] = useState(false);
-  const [showShareModal, setShowShareModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showEmailsModal, setShowEmailsModal] = useState(false);
-  const [controlProjectId, setControlProjectId] = useState(null);
-
-  useEffect(() => {
-    if (lockedDesignerId) setSelectedDesigner(lockedDesignerId);
-  }, [lockedDesignerId]);
-
-  const executiveKPIs = useMemo(() => {
-    const total = projects.length;
-    const done = projects.filter((p) => p.phase === "done").length;
-    const activeSite = projects.filter((p) => p.phase === "site" || p.phase === "balance").length;
-    const making = projects.filter((p) => p.phase === "making").length;
-    const obstacles = projects.filter((p) => hasObstacle(p)).length;
-    const late = projects.filter((p) => isProjectLate(p, today)).length;
-    return { total, done, activeSite, making, obstacles, late };
-  }, [projects, today]);
-
-  const filteredProjects = useMemo(() => {
-    return projects.filter((p) => {
-      if (projPhase !== "all" && p.phase !== projPhase) return false;
-      if (onlyLate && !isProjectLate(p, today)) return false;
-      if (onlyObstacles && !hasObstacle(p)) return false;
-      if (projSearch.trim()) {
-        const q = projSearch.toLowerCase();
-        return (p.file || "").toLowerCase().includes(q) || p.customer.toLowerCase().includes(q) || p.area.toLowerCase().includes(q);
-      }
-      return true;
-    });
-  }, [projects, projPhase, onlyLate, onlyObstacles, projSearch, today]);
-
-  const tlBounds = useMemo(() => {
-    const days = [];
-    projects.forEach((p) => [p.approved, p.delivery, p.install].forEach((d) => { const v = toDay(d); if (v) days.push(v); }));
-    const min = days.length ? Math.min(...days) - 10 : today - 60;
-    const max = days.length ? Math.max(...days) + 15 : today + 60;
-    return { start: min, end: max };
-  }, [projects, today]);
-
-  const canModifyTask = (task) => {
-    if (isManager) return true;
-    return lockedDesignerId && task.designerId === lockedDesignerId;
-  };
-
-  const moveTask = (taskId, newStatus) => {
-    const target = tasks.find((t) => t.id === taskId);
-    if (!target || !canModifyTask(target)) {
-      alert("غير مسموح: يمكنك التحكم في مهامك المسندة إليك فقط.");
-      return;
-    }
-    setTasks((prev) =>
-      prev.map((t) => {
-        if (t.id !== taskId) return t;
-        let elapsed = t.elapsedMs || 0;
-        let started = t.startedAt;
-        if (t.status === "ongoing" && started) {
-          elapsed += Date.now() - started;
-          started = null;
-        }
-        if (newStatus === "ongoing") started = Date.now();
-        let issueNote = t.issueNote;
-        if (newStatus === "issues") {
-          const reason = prompt("اكتب سبب المشكلة أو التعليق:", t.issueNote || "");
-          if (reason !== null) issueNote = reason;
-        }
-        return { ...t, status: newStatus, elapsedMs: elapsed, startedAt: started, issueNote };
-      })
-    );
-  };
-
-  const designerMetrics = useMemo(() => {
-    return designers.map((d) => {
-      const list = tasks.filter((t) => t.designerId === d.id);
-      const done = list.filter((t) => t.status === "done").length;
-      const ongoing = list.filter((t) => t.status === "ongoing").length;
-      const todo = list.filter((t) => t.status === "todo").length;
-      const issues = list.filter((t) => t.status === "issues").length;
-      const totalMs = list.reduce((acc, t) => acc + (t.elapsedMs || 0) + (t.startedAt ? Date.now() - t.startedAt : 0), 0);
-      const pct = list.length ? Math.round((done / list.length) * 100) : 0;
-      return { ...d, total: list.length, done, ongoing, todo, issues, totalMs, pct };
-    });
-  }, [designers, tasks]);
-
-  const visibleTasks = useMemo(() => {
-    return tasks
-      .filter((t) => {
-        if (lockedDesignerId && t.designerId !== lockedDesignerId) return false;
-        if (selectedDesigner !== "all" && t.designerId !== selectedDesigner) return false;
-        return true;
-      })
-      .sort((a, b) => PRIO_LABELS[a.priority].rank - PRIO_LABELS[b.priority].rank);
-  }, [tasks, selectedDesigner, lockedDesignerId]);
-
-  const whatsappSummary = useMemo(() => {
-    let txt = `*📊 تقرير المشاريع وفريق التصميم (Julie · TJ · Khadija)*\n`;
-    txt += `المشاريع الكلية: ${executiveKPIs.total} | تم التسليم: ${executiveKPIs.done} | عوائق: ${executiveKPIs.obstacles} | متأخرة: ${executiveKPIs.late}\n\n`;
-    designers.forEach((d) => {
-      const m = designerMetrics.find((x) => x.id === d.id);
-      const openTasks = tasks.filter((t) => t.designerId === d.id && t.status !== "done");
-      txt += `👤 *${d.name}* (الإنجاز: ${m.pct}% | المكتمل: ${m.done}/${m.total}):\n`;
-      if (openTasks.length === 0) txt += `   ✅ لا توجد مهام مفتوحة\n`;
-      openTasks.forEach((t, idx) => {
-        const proj = projects.find((p) => p.id === t.projectId);
-        const ref = t.isQuotation ? (t.clientLabel || "Quotation / مستقل") : (proj ? `${proj.file} · ${proj.customer}` : "مهمة عامة");
-        txt += `   ${idx + 1}. [${PRIO_LABELS[t.priority].label}] ${t.title} — (${ref}) [${STATUS_COLS.find((c) => c.id === t.status)?.en}]\n`;
-      });
-      txt += `\n`;
-    });
-    return txt;
-  }, [executiveKPIs, designers, designerMetrics, tasks, projects]);
-
-  const activeControlProject = useMemo(
-    () => projects.find((p) => p.id === controlProjectId) || null,
-    [projects, controlProjectId]
-  );
-
-  return (
-    <div className="app">
-      <header className="topbar">
-        <div>
-          <p className="eyebrow">لوحة المتابعة الإدارية · المشاريع وفريق التصميم</p>
-          <h1>{activeTab === "projects" ? "لوحة المشاريع والإدارة التنفيذية" : "إدارة فريق التصميم (Designers Hub)"}</h1>
-        </div>
-
-        <nav className="nav-tabs">
-          <button type="button" className={`tab-btn ${activeTab === "projects" ? "active" : ""}`} onClick={() => setActiveTab("projects")}>
-            📁 المشاريع الرئيسية ({projects.length})
-          </button>
-          <button type="button" className={`tab-btn ${activeTab === "designers" ? "active" : ""}`} onClick={() => setActiveTab("designers")}>
-            🎨 المصممون (Julie · TJ · Khadija)
-          </button>
-        </nav>
-
-        <div className="actions-bar">
-          <button type="button" className="btn" onClick={() => setShowLoginModal(true)}>
-            {session ? `🟢 ${session.name} (${session.email})` : "🔐 دخول بالإيميل"}
-          </button>
-          <button type="button" className="btn" onClick={() => setShowShareModal(true)}>
-            🔗 مشاركة وتقرير واتساب
-          </button>
-        </div>
-      </header>
-
-      {activeTab === "projects" && (
-        <>
-          <div className="tiles">
-            <div className="tile">
-              <span className="k">إجمالي المشاريع</span>
-              <span className="v">{executiveKPIs.total}</span>
-              <span className="s">{executiveKPIs.done} مشاريع تم تسليمها بالكامل</span>
-            </div>
-            <div className="tile">
-              <span className="k">مشاريع في الموقع والتشغيل</span>
-              <span className="v">{executiveKPIs.activeSite}</span>
-              <span className="s">تركيب جارٍ / بنود متبقية · و{executiveKPIs.making} تحت التصنيع</span>
-            </div>
-            <div className={`tile ${executiveKPIs.obstacles > 0 ? "is-warn" : ""}`}>
-              <span className="k">🚧 مشاريع متوقفة أو عليها عوائق</span>
-              <span className="v">{executiveKPIs.obstacles}</span>
-              <span className="s">نقص خامات / توقف تركيب / اعتمادات أو قوائم قطع</span>
-            </div>
-            <div className={`tile ${executiveKPIs.late > 0 ? "is-crit" : ""}`}>
-              <span className="k">⚠️ مشاريع متأخرة عن التسليم</span>
-              <span className="v">{executiveKPIs.late}</span>
-              <span className="s">تجاوزت موعد التسليم ونسبة إنجازها &lt; 50%</span>
-            </div>
-          </div>
-
-          <ExecutiveCharts projects={projects} tasks={tasks} designers={designers} />
-
-          <section className="card">
-            <div className="card-head">
-              <h2>سجل المشاريع والتحكم في الإنجاز</h2>
-              <span className="count">{filteredProjects.length}</span>
-              <span className="hint">اضغط على أي مشروع للدخول وتحديث الكميات المنجزة وحساب النسبة</span>
-              {isManager && (
-                <button type="button" className="btn btn-primary" onClick={() => setShowAddProject(true)}>
-                  + إضافة مشروع جديد
-                </button>
-              )}
-            </div>
-
-            <div className="filters">
-              <div className="field">
-                <label>بحث (رقم الملف / العميل / المنطقة)</label>
-                <input type="search" placeholder="مثال: 5076 أو Mutlaa..." value={projSearch} onChange={(e) => setProjSearch(e.target.value)} style={{ minWidth: 220 }} />
-              </div>
-              <div className="field">
-                <label>المرحلة</label>
-                <select value={projPhase} onChange={(e) => setProjPhase(e.target.value)}>
-                  <option value="all">كل المراحل</option>
-                  {Object.entries(PHASE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-                </select>
-              </div>
-              <label style={{ display: "inline-flex", alignItems: "center", gap: 6, height: 36, cursor: "pointer" }}>
-                <input type="checkbox" checked={onlyObstacles} onChange={(e) => setOnlyObstacles(e.target.checked)} />
-                عوائق / متوقف فقط
-              </label>
-              <label style={{ display: "inline-flex", alignItems: "center", gap: 6, height: 36, cursor: "pointer" }}>
-                <input type="checkbox" checked={onlyLate} onChange={(e) => setOnlyLate(e.target.checked)} />
-                متأخرة فقط
-              </label>
-            </div>
-
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>الملف</th>
-                    <th>العميل والمنطقة</th>
-                    <th>الزجاج / الدهان</th>
-                    <th>الاعتماد</th>
-                    <th>التسليم</th>
-                    <th>نسبة الإنجاز</th>
-                    <th>المرحلة والحالة</th>
-                    <th>ملاحظات</th>
-                    <th>تحكم</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredProjects.map((p) => {
-                    const pct = calcProgress(p);
-                    const late = isProjectLate(p, today);
-                    const obs = hasObstacle(p);
-                    return (
-                      <tr key={p.id} onClick={() => setControlProjectId(p.id)} style={{ cursor: "pointer" }}>
-                        <td className="mono"><b>{p.file || "—"}</b></td>
-                        <td>
-                          <div><b>{p.customer}</b></div>
-                          <small style={{ color: "var(--ink-3)" }}>{p.area}</small>
-                        </td>
-                        <td>
-                          <div style={{ fontSize: 12.5 }}>{p.glass || "—"}</div>
-                          <small style={{ color: "var(--ink-3)" }}>{p.paint || "—"}</small>
-                        </td>
-                        <td className="mono">{p.approved || "—"}</td>
-                        <td className="mono">{p.delivery || "—"}</td>
-                        <td>
-                          <span className="bar"><i style={{ width: `${pct}%` }} /></span>
-                          <b className="mono">{pct}%</b>
-                        </td>
-                        <td>
-                          <span className={`badge ${p.phase === "done" ? "done" : p.phase === "stopped" ? "stopped" : ""}`}>
-                            {PHASE_LABELS[p.phase]}
-                          </span>
-                          {obs && <span className="badge late" style={{ marginInlineStart: 4 }}>عائق</span>}
-                          {late && <span className="badge late" style={{ marginInlineStart: 4 }}>متأخر</span>}
-                        </td>
-                        <td style={{ maxWidth: 220, fontSize: 12, color: "var(--ink-2)" }}>{p.note || "—"}</td>
-                        <td onClick={(e) => e.stopPropagation()}>
-                          <button type="button" className="btn btn-sm" onClick={() => setControlProjectId(p.id)}>
-                            ⚙️ دخول وتحكم
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section className="card">
-            <div className="card-head">
-              <h2>الجدول الزمني للتسليم والتركيب</h2>
-              <span className="hint">الخط الأسود العمودي يمثل تاريخ اليوم</span>
-            </div>
-            <div className="tl">
-              <div className="tl-inner">
-                <div className="tl-head">
-                  <div className="tl-corner">المشروع</div>
-                  <div className="tl-axis">
-                    {today >= tlBounds.start && today <= tlBounds.end && (
-                      <span className="tl-today-chip" style={{ left: `${((today - tlBounds.start) / (tlBounds.end - tlBounds.start)) * 100}%` }}>
-                        Today
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="tl-grid">
-                  {today >= tlBounds.start && today <= tlBounds.end && (
-                    <i className="tl-line is-today" style={{ left: `${((today - tlBounds.start) / (tlBounds.end - tlBounds.start)) * 100}%` }} />
-                  )}
-                </div>
-                {filteredProjects.filter((p) => p.approved || p.delivery || p.install).map((p) => {
-                  const span = tlBounds.end - tlBounds.start;
-                  const pctPos = (d) => ((d - tlBounds.start) / span) * 100;
-                  const a = toDay(p.approved);
-                  const d = toDay(p.delivery);
-                  const ins = toDay(p.install);
-                  const late = isProjectLate(p, today);
-                  return (
-                    <div key={p.id} className="tl-row">
-                      <div className="tl-label">
-                        <span className="mono" style={{ width: 56 }}>{p.file || "—"}</span>
-                        <span className="tl-name">{p.customer}</span>
-                      </div>
-                      <div className="tl-track">
-                        {a && d && d >= a && <span className={`tl-bar ${late ? "is-late" : ""}`} style={{ left: `${pctPos(a)}%`, width: `max(6px, ${pctPos(d) - pctPos(a)}%)` }} />}
-                        {d && <span className={`tl-dot ${late ? "is-late" : ""}`} style={{ left: `${pctPos(d)}%` }} />}
-                        {ins && <span className="tl-diamond" style={{ left: `${pctPos(ins)}%` }} />}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        </>
-      )}
-
-      {activeTab === "designers" && (
-        <>
-          <div className="designers-grid">
-            {designerMetrics
-              .filter((d) => !lockedDesignerId || d.id === lockedDesignerId)
-              .map((d) => {
-                const active = selectedDesigner === d.id;
-                return (
-                  <div
-                    key={d.id}
-                    className={`designer-card ${active ? "is-active" : ""}`}
-                    onClick={() => !lockedDesignerId && setSelectedDesigner(active ? "all" : d.id)}
-                    style={{ cursor: lockedDesignerId ? "default" : "pointer" }}
-                  >
-                    <div className="d-head">
-                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                        <div className="d-avatar">{d.name.slice(0, 2).toUpperCase()}</div>
-                        <div>
-                          <b style={{ fontSize: 16 }}>{d.name}</b>
-                          <div style={{ fontSize: 12, color: "var(--ink-3)" }}>{d.email}</div>
-                        </div>
-                      </div>
-                      <div style={{ textAlign: "end" }}>
-                        <b className="mono" style={{ fontSize: 20 }}>{d.pct}%</b>
-                        <div style={{ fontSize: 11, color: "var(--ink-3)" }}>الإنجاز</div>
-                      </div>
-                    </div>
-                    <div className="bar" style={{ width: "100%" }}><i style={{ width: `${d.pct}%` }} /></div>
-                    <div className="d-stats">
-                      <div><span>للتنفيذ</span><b className="mono">{d.todo}</b></div>
-                      <div><span>قيد التنفيذ</span><b className="mono">{d.ongoing}</b></div>
-                      <div><span>مكتملة</span><b className="mono">{d.done}</b></div>
-                      <div><span>الوقت</span><b className="mono">{formatHours(d.totalMs)}</b></div>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-
-          <section className="card">
-            <div className="card-head">
-              <h2>لوحة مهام المصممين (Kanban · الأولويات · الكوتيشن)</h2>
-              <span className="count">{visibleTasks.length}</span>
-              {isManager && selectedDesigner !== "all" && (
-                <button type="button" className="btn btn-sm" onClick={() => setSelectedDesigner("all")}>عرض الكل</button>
-              )}
-              <div style={{ marginInlineStart: "auto", display: "flex", gap: 8 }}>
-                {isManager && (
-                  <>
-                    <button type="button" className="btn btn-sm" onClick={() => setShowEmailsModal(true)}>⚙️ إيميلات الفريق</button>
-                    <button type="button" className="btn btn-primary" onClick={() => setShowAddTask(true)}>+ مهمة أو كوتيشن</button>
-                  </>
-                )}
-              </div>
-            </div>
-
-            <div className="board">
-              {STATUS_COLS.map((col) => {
-                const colTasks = visibleTasks.filter((t) => t.status === col.id);
-                return (
-                  <div
-                    key={col.id}
-                    className="col"
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={(e) => {
-                      const tid = e.dataTransfer.getData("text/plain");
-                      if (tid) moveTask(tid, col.id);
-                    }}
-                  >
-                    <div className="col-head">
-                      <span className="dot" style={{ background: col.color }} />
-                      <h3>{col.label}</h3>
-                      <span className="mono" style={{ fontSize: 11, color: "var(--ink-3)" }}>{col.en}</span>
-                      <span className="count" style={{ marginInlineStart: "auto" }}>{colTasks.length}</span>
-                    </div>
-                    <div className="col-body">
-                      {colTasks.map((t) => {
-                        const designer = designers.find((x) => x.id === t.designerId);
-                        const proj = projects.find((x) => x.id === t.projectId);
-                        const totalMs = (t.elapsedMs || 0) + (t.startedAt ? Date.now() - t.startedAt : 0);
-                        return (
-                          <article
-                            key={t.id}
-                            className="kcard"
-                            draggable={canModifyTask(t)}
-                            onDragStart={(e) => e.dataTransfer.setData("text/plain", t.id)}
-                          >
-                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
-                              <span className={`prio ${PRIO_LABELS[t.priority].cls}`}>{PRIO_LABELS[t.priority].label}</span>
-                              <span className="mono" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>⏱ {formatHours(totalMs)}</span>
-                            </div>
-                            <h4>{t.title}</h4>
-                            <div style={{ fontSize: 12 }}>
-                              {t.isQuotation ? (
-                                <span className="badge quote">💼 Quotation / مستقل: {t.clientLabel || "عميل محتمل"}</span>
-                              ) : (
-                                <span style={{ color: "var(--ink-3)" }}>
-                                  المشروع: <b className="mono">{proj ? proj.file : "—"}</b> · {proj?.customer || ""}
-                                </span>
-                              )}
-                            </div>
-                            {t.issueNote && <div className="issue-note">⚠️ {t.issueNote}</div>}
-                            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: "var(--ink-2)" }}>
-                              <span>👤 <b>{designer?.name}</b></span>
-                              <span className="mono">{t.due || "—"}</span>
-                            </div>
-                            <select
-                              value={t.status}
-                              disabled={!canModifyTask(t)}
-                              onChange={(e) => moveTask(t.id, e.target.value)}
-                              style={{ padding: "4px 6px", borderRadius: 6, border: "1px solid var(--line)", fontSize: 12 }}
-                            >
-                              {STATUS_COLS.map((s) => <option key={s.id} value={s.id}>{s.label} ({s.en})</option>)}
-                            </select>
-                          </article>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </>
-      )}
-
-      {activeControlProject && (
-        <ProjectControlModal
-          project={activeControlProject}
-          onClose={() => setControlProjectId(null)}
-          onUpdate={(updated) => {
-            setProjects((prev) => prev.map((p) => (p.id === updated.id ? normalizeProjectUnits(updated) : p)));
-          }}
-        />
-      )}
-
-      {showAddProject && (
-        <AddProjectModal
-          onClose={() => setShowAddProject(false)}
-          onSave={(p) => {
-            setProjects((prev) => [normalizeProjectUnits(p), ...prev]);
-            setShowAddProject(false);
-          }}
-        />
-      )}
-
-      {showAddTask && (
-        <AddTaskModal
-          projects={projects}
-          designers={designers}
-          onClose={() => setShowAddTask(false)}
-          onSave={(t) => {
-            setTasks((prev) => [t, ...prev]);
-            setShowAddTask(false);
-          }}
-        />
-      )}
-
-      {showLoginModal && (
-        <EmailLoginModal
-          designers={designers}
-          session={session}
-          onClose={() => setShowLoginModal(false)}
-          onLogin={(s) => {
-            setSession(s);
-            if (s.role === "designer") setActiveTab("designers");
-            setShowLoginModal(false);
-          }}
-          onLogout={() => {
-            setSession(null);
-            setSelectedDesigner("all");
-            setShowLoginModal(false);
-          }}
-        />
-      )}
-
-      {showEmailsModal && (
-        <EmailsModal
-          designers={designers}
-          onClose={() => setShowEmailsModal(false)}
-          onSave={(next) => {
-            setDesigners(next);
-            setShowEmailsModal(false);
-          }}
-        />
-      )}
-
-      {showShareModal && (
-        <div className="modal-backdrop" onClick={() => setShowShareModal(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-head">
-              <h3>مشاركة وتقرير واتساب</h3>
-              <button type="button" className="btn btn-sm" onClick={() => setShowShareModal(false)}>✕</button>
-            </div>
-            <div className="field" style={{ marginBottom: 12 }}>
-              <label>رابط اللوحة المباشر:</label>
-              <div style={{ display: "flex", gap: 8 }}>
-                <input type="text" readOnly value={window.location.href} style={{ flex: 1 }} />
-                <button type="button" className="btn btn-primary" onClick={() => { navigator.clipboard.writeText(window.location.href); alert("تم نسخ الرابط"); }}>نسخ</button>
-              </div>
-            </div>
-            <div className="field">
-              <label>ملخص تنفيذي ومهام المصممين لواتساب:</label>
-              <textarea rows={9} readOnly value={whatsappSummary} style={{ width: "100%", fontSize: 13 }} />
-              <button type="button" className="btn btn-primary" style={{ marginTop: 8, width: "fit-content" }} onClick={() => { navigator.clipboard.writeText(whatsappSummary); alert("تم نسخ التقرير"); }}>
-                📋 نسخ تقرير واتساب
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function ProjectControlModal({ project, onClose, onUpdate }) {
-  const [draft, setDraft] = useState(() => ({
-    ...project,
-    units: { ...project.units },
-    doneUnits: { ...(project.doneUnits || {}) }
-  }));
-
-  const updateDoneUnit = (key, newDoneVal) => {
-    const req = Number(draft.units[key]) || 0;
-    const clampedDone = Math.max(0, Math.min(req, Number(newDoneVal) || 0));
-    const nextDoneUnits = { ...draft.doneUnits, [key]: clampedDone };
-    const totalReq = UNIT_KEYS.reduce((s, k) => s + (Number(draft.units[k]) || 0), 0);
-    const totalDone = UNIT_KEYS.reduce((s, k) => s + (Number(nextDoneUnits[k]) || 0), 0);
-    const finalTotal = totalReq > 0 ? totalReq : Number(draft.total) || 0;
-    const nextBalance = Math.max(0, finalTotal - totalDone);
-
-    const updated = {
-      ...draft,
-      total: finalTotal,
-      balance: nextBalance,
-      doneUnits: nextDoneUnits,
-      phase: nextBalance === 0 && finalTotal > 0 ? "done" : draft.phase === "done" ? "site" : draft.phase
-    };
-    setDraft(updated);
-    onUpdate(updated);
-  };
-
-  const updateReqUnit = (key, newReqVal) => {
-    const req = Math.max(0, Number(newReqVal) || 0);
-    const nextUnits = { ...draft.units, [key]: req };
-    const nextDone = Math.min(req, Number(draft.doneUnits[key]) || 0);
-    const nextDoneUnits = { ...draft.doneUnits, [key]: nextDone };
-    const totalReq = UNIT_KEYS.reduce((s, k) => s + (Number(nextUnits[k]) || 0), 0);
-    const totalDone = UNIT_KEYS.reduce((s, k) => s + (Number(nextDoneUnits[k]) || 0), 0);
-    const updated = {
-      ...draft,
-      units: nextUnits,
-      doneUnits: nextDoneUnits,
-      total: totalReq,
-      balance: Math.max(0, totalReq - totalDone)
-    };
-    setDraft(updated);
-    onUpdate(updated);
-  };
-
-  const saveMeta = (e) => {
-    e.preventDefault();
-    onUpdate(draft);
-    onClose();
-  };
-
-  const overallPct = calcProgress(draft);
-
-  return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <form className="modal" onClick={(e) => e.stopPropagation()} onSubmit={saveMeta}>
-        <div className="modal-head">
-          <div>
-            <h3>تحكم وإنجاز المشروع: {draft.file || "—"} · {draft.customer}</h3>
-            <small style={{ color: "var(--ink-3)" }}>نسبة الإنجاز الحالية: <b className="mono">{overallPct}%</b></small>
-          </div>
-          <button type="button" className="btn btn-sm" onClick={onClose}>إغلاق</button>
-        </div>
-
-        <h4 style={{ margin: "0 0 8px" }}>تحديث الكميات المنجزة فعلياً لكل بند (يُحسب الإنجاز تلقائياً):</h4>
-        {UNIT_KEYS.map((k) => {
-          const req = Number(draft.units[k]) || 0;
-          const done = Number(draft.doneUnits[k]) || 0;
-          if (req === 0 && done === 0 && k !== "windows" && k !== "doors") return null;
-          const itemPct = req > 0 ? Math.round((done / req) * 100) : 0;
-          return (
-            <div key={k} className="unit-ctrl-row">
-              <div style={{ minWidth: 165 }}>
-                <b>{UNIT_LABELS[k]}</b>
-                <div style={{ fontSize: 12, color: "var(--ink-3)" }}>
-                  منجز: <b className="mono">{done}</b> / مطلوب: <b className="mono">{req}</b> (<b className="mono">{itemPct}%</b>)
-                </div>
-              </div>
-              <div className="step-group">
-                <button type="button" className="step-btn" onClick={() => updateDoneUnit(k, done - 1)}>-</button>
-                <input
-                  type="number"
-                  min="0"
-                  max={req || 9999}
-                  value={done}
-                  onChange={(e) => updateDoneUnit(k, e.target.value)}
-                  style={{ width: 64, textAlign: "center", padding: 4, borderRadius: 6, border: "1px solid var(--line-strong)" }}
-                />
-                <button type="button" className="step-btn" onClick={() => updateDoneUnit(k, done + 1)}>+</button>
-                <button type="button" className="btn btn-sm" onClick={() => updateDoneUnit(k, done + 5)}>+5</button>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12 }}>
-                <span>إجمالي البند:</span>
-                <input
-                  type="number"
-                  min="0"
-                  value={req}
-                  onChange={(e) => updateReqUnit(k, e.target.value)}
-                  style={{ width: 62, textAlign: "center", padding: 4, borderRadius: 6, border: "1px solid var(--line)" }}
-                />
-              </div>
-            </div>
-          );
-        })}
-
-        <details style={{ marginTop: 12 }}>
-          <summary style={{ cursor: "pointer", fontWeight: 600, color: "var(--ink-2)" }}>تعديل بيانات المرحلة والمواعيد والملاحظات</summary>
-          <div className="form-grid" style={{ marginTop: 10 }}>
-            <div className="field">
-              <label>المرحلة</label>
-              <select value={draft.phase} onChange={(e) => setDraft({ ...draft, phase: e.target.value })}>
-                {Object.entries(PHASE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-              </select>
-            </div>
-            <div className="field"><label>تاريخ التسليم</label><input type="date" value={draft.delivery || ""} onChange={(e) => setDraft({ ...draft, delivery: e.target.value })} /></div>
-            <div className="field"><label>ملاحظات / عوائق</label><input value={draft.note || ""} onChange={(e) => setDraft({ ...draft, note: e.target.value })} /></div>
-          </div>
-        </details>
-
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 }}>
-          <button type="submit" className="btn btn-primary">حفظ وإغلاق</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function AddProjectModal({ onClose, onSave }) {
-  const [form, setForm] = useState({
-    file: "", customer: "", area: "", glass: "", paint: "",
-    approved: "", delivery: "", install: "", total: 0, balance: 0,
-    phase: "making", note: "",
-    units: { windows: 0, doors: 0, decor: 0, sliding: 0, curtainWall: 0, skylight: 0, louver: 0, flyScreen: 0, handrail: 0 }
-  });
-
-  const handleUnit = (k, val) => {
-    const nextUnits = { ...form.units, [k]: Math.max(0, Number(val) || 0) };
-    const sum = Object.values(nextUnits).reduce((a, b) => a + b, 0);
-    setForm({ ...form, units: nextUnits, total: sum, balance: sum });
-  };
-
-  const submit = (e) => {
-    e.preventDefault();
-    if (!form.customer.trim()) return alert("يرجى إدخال اسم العميل");
-    onSave({ ...form, id: form.file || `p-${Date.now()}` });
-  };
-
-  return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <form className="modal" onClick={(e) => e.stopPropagation()} onSubmit={submit}>
-        <div className="modal-head">
-          <h3>إضافة مشروع جديد</h3>
-          <button type="button" className="btn btn-sm" onClick={onClose}>✕</button>
-        </div>
-        <div className="form-grid">
-          <div className="field"><label>رقم الملف (File)</label><input value={form.file} onChange={(e) => setForm({ ...form, file: e.target.value })} /></div>
-          <div className="field"><label>اسم العميل *</label><input required value={form.customer} onChange={(e) => setForm({ ...form, customer: e.target.value })} /></div>
-          <div className="field"><label>المنطقة (Area)</label><input value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value })} /></div>
-          <div className="field"><label>الزجاج (Glass)</label><input value={form.glass} onChange={(e) => setForm({ ...form, glass: e.target.value })} /></div>
-          <div className="field"><label>الدهان (Paint)</label><input value={form.paint} onChange={(e) => setForm({ ...form, paint: e.target.value })} /></div>
-          <div className="field">
-            <label>المرحلة</label>
-            <select value={form.phase} onChange={(e) => setForm({ ...form, phase: e.target.value })}>
-              {Object.entries(PHASE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-            </select>
-          </div>
-          <div className="field"><label>الاعتماد</label><input type="date" value={form.approved} onChange={(e) => setForm({ ...form, approved: e.target.value })} /></div>
-          <div className="field"><label>التسليم</label><input type="date" value={form.delivery} onChange={(e) => setForm({ ...form, delivery: e.target.value })} /></div>
-          <div className="field"><label>التركيب</label><input type="date" value={form.install} onChange={(e) => setForm({ ...form, install: e.target.value })} /></div>
-        </div>
-
-        <div className="field" style={{ marginTop: 10 }}>
-          <label>بنود المشروع (يمكنك تحديث المنجز لكل بند بعد الحفظ من داخل المشروع):</label>
-          <div className="form-grid" style={{ marginTop: 6 }}>
-            {UNIT_KEYS.map((k) => (
-              <div key={k} className="field">
-                <label style={{ fontSize: 11 }}>{UNIT_LABELS[k]}</label>
-                <input type="number" min="0" value={form.units[k]} onChange={(e) => handleUnit(k, e.target.value)} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="field" style={{ marginTop: 10 }}>
-          <label>ملاحظات</label>
-          <input value={form.note} onChange={(e) => setForm({ ...form, note: e.target.value })} />
-        </div>
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 }}>
-          <button type="button" className="btn" onClick={onClose}>إلغاء</button>
-          <button type="submit" className="btn btn-primary">حفظ المشروع</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function AddTaskModal({ projects, designers, onClose, onSave }) {
-  const [title, setTitle] = useState("");
-  const [isQuotation, setIsQuotation] = useState(false);
-  const [projectId, setProjectId] = useState(projects[0]?.id || "");
-  const [clientLabel, setClientLabel] = useState("");
-  const [designerId, setDesignerId] = useState("khadija");
-  const [priority, setPriority] = useState("high");
-  const [due, setDue] = useState("");
-
-  const submit = (e) => {
-    e.preventDefault();
-    if (!title.trim()) return;
-    onSave({
-      id: `t-${Date.now()}`,
-      title,
-      isQuotation,
-      projectId: isQuotation ? "" : projectId,
-      clientLabel: isQuotation ? clientLabel : "",
-      designerId,
-      priority,
-      status: "todo",
-      due,
-      startedAt: null,
-      elapsedMs: 0,
-      issueNote: ""
-    });
-  };
-
-  return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <form className="modal" onClick={(e) => e.stopPropagation()} onSubmit={submit} style={{ maxWidth: 480 }}>
-        <div className="modal-head">
-          <h3>إضافة مهمة أو عرض سعر (Quotation)</h3>
-          <button type="button" className="btn btn-sm" onClick={onClose}>✕</button>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <div className="field"><label>عنوان المهمة *</label><input required value={title} onChange={(e) => setTitle(e.target.value)} /></div>
-          <label style={{ display: "inline-flex", alignItems: "center", gap: 6, cursor: "pointer", fontSize: 13 }}>
-            <input type="checkbox" checked={isQuotation} onChange={(e) => setIsQuotation(e.target.checked)} />
-            عرض سعر (Quotation) / عميل محتمل / مهمة مستقلة (غير مرتبطة بمشروع قائم)
-          </label>
-          {isQuotation ? (
-            <div className="field"><label>اسم العميل المحتمل أو مرجع الكوتيشن</label><input value={clientLabel} onChange={(e) => setClientLabel(e.target.value)} placeholder="مثال: Quotation · عميل محتمل" /></div>
-          ) : (
-            <div className="field">
-              <label>المشروع المرتبط</label>
-              <select value={projectId} onChange={(e) => setProjectId(e.target.value)}>
-                {projects.map((p) => <option key={p.id} value={p.id}>{p.file || "—"} · {p.customer}</option>)}
-              </select>
-            </div>
-          )}
-          <div className="field">
-            <label>إسناد إلى المصمم</label>
-            <select value={designerId} onChange={(e) => setDesignerId(e.target.value)}>
-              {designers.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
-            </select>
-          </div>
-          <div className="field">
-            <label>الأولوية</label>
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-              {Object.entries(PRIO_LABELS).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
-            </select>
-          </div>
-          <div className="field"><label>تاريخ الاستحقاق</label><input type="date" value={due} onChange={(e) => setDue(e.target.value)} /></div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 }}>
-          <button type="button" className="btn" onClick={onClose}>إلغاء</button>
-          <button type="submit" className="btn btn-primary">حفظ وتوزيع</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function EmailLoginModal({ designers, session, onClose, onLogin, onLogout }) {
-  const [email, setEmail] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const clean = email.trim().toLowerCase();
-    if (clean === MANAGER_EMAIL.toLowerCase()) {
-      onLogin({ role: "manager", name: "General Manager", email: MANAGER_EMAIL });
-      return;
-    }
-    const found = designers.find((d) => d.email.trim().toLowerCase() === clean);
-    if (!found) {
-      alert("هذا الإيميل غير مسجل في قائمة المصممين أو الإدارة.");
-      return;
-    }
-    onLogin({ role: "designer", designerId: found.id, name: found.name, email: found.email });
-  };
-
-  return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 440 }}>
-        <div className="modal-head">
-          <h3>تسجيل الدخول بالإيميل</h3>
-          <button type="button" className="btn btn-sm" onClick={onClose}>✕</button>
-        </div>
-        <p style={{ fontSize: 13, color: "var(--ink-2)" }}>
-          يدخل كل مصمم بإيميله المعتمد ليتحكم في مهامه فقط دون الوصول لحساب غيره.
-        </p>
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <div className="field">
-            <label>البريد الإلكتروني</label>
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="khadija@company.com" />
-          </div>
-          <button type="submit" className="btn btn-primary" style={{ justifyContent: "center" }}>دخول</button>
-        </form>
-        <div style={{ marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--line)", fontSize: 12, color: "var(--ink-3)" }}>
-          <div>الإيميلات المعتمدة حالياً:</div>
-          {designers.map((d) => <div key={d.id} className="mono">{d.name}: {d.email}</div>)}
-          <div className="mono">Manager: {MANAGER_EMAIL}</div>
-        </div>
-        {session && (
-          <button type="button" className="btn btn-sm" style={{ marginTop: 12 }} onClick={onLogout}>تسجيل الخروج</button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function EmailsModal({ designers, onClose, onSave }) {
-  const [list, setList] = useState(designers.map((d) => ({ ...d })));
-  return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 460 }}>
-        <div className="modal-head">
-          <h3>إدارة إيميلات المصممين</h3>
-          <button type="button" className="btn btn-sm" onClick={onClose}>✕</button>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {list.map((d, idx) => (
-            <div key={d.id} className="field">
-              <label>{d.name}</label>
-              <input
-                type="email"
-                value={d.email}
-                onChange={(e) => {
-                  const next = [...list];
-                  next[idx] = { ...next[idx], email: e.target.value };
-                  setList(next);
-                }}
-              />
-            </div>
-          ))}
-        </div>
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 }}>
-          <button type="button" className="btn" onClick={onClose}>إلغاء</button>
-          <button type="button" className="btn btn-primary" onClick={() => onSave(list)}>حفظ الإيميلات</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-</script>
-</body>
-</html>
+      const s = localStorage.getItem("pd_projects_v4");
+      return s ? JSON.parse(s).map(normalizeProjectUnits) : INITIAL_PROJECTS
